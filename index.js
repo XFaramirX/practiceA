@@ -1,8 +1,9 @@
 const backlog = [
   { title: "Add a passing test command", status: "done" },
   { title: "Write trunk-based practice notes", status: "done" },
-  { title: "Pick the next tiny slice", status: "todo" },
-  { title: "Confirm Learn the trunk based flow", status: "todo" },
+  { title: "Commit a small verified change to main", status: "done" },
+  { title: "Push the finished slice to origin/main", status: "done" },
+  { title: "Start the next tiny slice from main", status: "todo" },
 ];
 
 function summarizeBacklog(items) {
