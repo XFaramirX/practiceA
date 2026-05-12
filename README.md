@@ -76,3 +76,138 @@ npm test
 
 ## practice cherry pick
  git cherry-pick 6054e28    
+
+# Git Practice Repo
+
+This repo is used to practice common Git workflows and recovery commands.
+
+## Topics Covered
+
+- Git cherry-pick
+- Git reset soft
+- Git reset hard
+- Git squash with interactive rebase
+- Git Flow
+- Trunk-Based Development
+- Rebase vs Pull
+- Force push with lease
+
+---
+
+## Basic Branch Setup
+
+```bash
+git checkout main
+git pull origin main
+git checkout -b feature/my-practice
+Cherry-Pick
+
+Use cherry-pick when you want to copy one specific commit from another branch.
+
+git checkout target-branch
+git cherry-pick <commit-hash>
+
+Example:
+
+git cherry-pick abc1234
+Reset Soft
+
+Use soft reset when you want to combine commits but keep the changes staged.
+
+git reset --soft HEAD~3
+git commit -m "Clean commit message"
+
+Good for cleaning up messy local commits before pushing.
+
+Reset Hard
+
+Use hard reset when you want to delete commits or local changes completely.
+
+git reset --hard HEAD~1
+
+Danger: this removes changes from your working tree.
+
+Squash with Interactive Rebase
+
+Use interactive rebase when you want more control over commit history.
+
+git rebase -i HEAD~3
+
+Example:
+
+pick abc111 Commit part 1
+squash def222 Commit part 2
+squash ghi333 Commit part 3
+
+Final result: one clean commit.
+
+Rebase vs Pull
+
+When updating main, use pull:
+
+git checkout main
+git pull origin main
+
+When updating a feature branch with latest main, prefer rebase:
+
+git checkout feature/my-practice
+git fetch origin
+git rebase origin/main
+
+This keeps the branch history clean.
+
+Avoid doing this from a feature branch unless you specifically want a merge commit:
+
+git pull origin main
+Force Push With Lease
+
+Use this after rewriting pushed history with rebase, amend, or reset.
+
+git push --force-with-lease
+
+This is safer than:
+
+git push --force
+
+because it protects against overwriting someone else’s new commits.
+
+Git Flow
+
+Git Flow usually uses long-lived branches:
+
+main
+develop
+feature/*
+release/*
+hotfix/*
+
+Typical flow:
+
+feature branch -> develop -> release -> main
+
+Good for scheduled releases and controlled production deployments.
+
+Trunk-Based Development
+
+Trunk-based development keeps work close to main.
+
+main
+feature/small-change
+feature/another-small-change
+
+Typical flow:
+
+git checkout main
+git pull origin main
+git checkout -b feature/small-change
+
+Then open a PR back to main.
+
+Good for CI/CD, short-lived branches, and frequent releases.
+
+Personal Rules
+Update same branch from remote  -> git pull
+Update feature with latest main -> git rebase origin/main
+Clean messy commits             -> git reset --soft HEAD~N
+Rewrite pushed branch           -> git push --force-with-lease
+Delete local changes carefully  -> git reset --hard
