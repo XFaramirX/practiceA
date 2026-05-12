@@ -28,6 +28,12 @@ for long and `main` stays healthy.
 In trunk-based flow, that slice is done. Do not keep working in the old commit series.
 Start a new tiny change from the latest `main`, verify it, and push again.
 
+## Before you merge back to main
+
+1. Keep the branch focused on one small change.
+2. Make sure `npm test` passes.
+3. Merge it back quickly and delete the branch.
+
 ## Example commands
 
 Short-lived branch:
