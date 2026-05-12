@@ -1,10 +1,10 @@
 {
   "name": "githubpractice",
   "version": "1.0.0",
-  "description": "",
+  "description": "Small repo for practicing trunk-based flow with tiny verified changes.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --test"
   },
   "keywords": [],
   "author": "",
