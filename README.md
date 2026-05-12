@@ -12,7 +12,7 @@ Work in tiny slices, keep `main` releasable, and verify every change with `npm t
 short-lived branch that merges back quickly. The key rule is that branches do not stay open
 for long and `main` stays healthy.
 
-## Practice loop
+## Practice loops
 
 1. Pull the latest `main`.
 2. Pick one small improvement you can finish quickly.
